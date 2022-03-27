@@ -86,7 +86,6 @@ DATABASES = {
         "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
         "HOST": os.environ.get("POSTGRES_SERVER"),
         "PORT": os.environ.get("POSTGRES_PORT"),
-        "DISABLE_SERVER_SIDE_CURSORS": True,
     }
 }
 
@@ -133,3 +132,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+AUTH_USER_MODEL = 'dating_app_core.User'

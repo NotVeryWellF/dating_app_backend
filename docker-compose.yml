@@ -8,7 +8,11 @@ services:
     build:
       context: ./dating_app
       dockerfile: Dockerfile
-    command: bash -c "python3 manage.py runserver 0.0.0.0:8000"
+    command: bash -c "
+      ./wait_for_it.sh $POSTGRES_SERVER:$POSTGRES_PORT &&
+      sleep 1 &&
+      python3 manage.py migrate &&
+      python3 manage.py runserver 0.0.0.0:8000"
     container_name: dating_app
     hostname: dating_app
     networks:
