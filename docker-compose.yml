@@ -1,0 +1,39 @@
+version: "3.9"
+
+networks:
+  dating_app_network:
+
+services:
+  dating_app:
+    build:
+      context: ./dating_app
+      dockerfile: Dockerfile
+    command: bash -c "python3 manage.py runserver 0.0.0.0:8000"
+    container_name: dating_app
+    hostname: dating_app
+    networks:
+      - dating_app_network
+    ports:
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+
+  postgres:
+    image: postgres:14.2-alpine
+    container_name: postgres
+    hostname: postgres
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    networks:
+      - dating_app_network
+    restart: always
+
+volumes:
+  postgres_data:
