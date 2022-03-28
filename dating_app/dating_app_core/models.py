@@ -37,7 +37,7 @@ class UserManager(BaseUserManager):
 
 
 def image_upload_path(instance, filename):
-    return f'/images/user_{instance.user.id}/{filename}'
+    return f'images/user_{instance.id}/{filename}'
 
 
 class User(AbstractBaseUser, PermissionsMixin):

@@ -133,3 +133,6 @@ dmypy.json
 
 # postgres
 postgres_data
+
+# images
+images

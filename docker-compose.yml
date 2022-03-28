@@ -19,6 +19,8 @@ services:
       - dating_app_network
     ports:
       - "8000:8000"
+    volumes:
+      - ./images:/dating_app/media/images/
     restart: always
     depends_on:
       - postgres
@@ -41,3 +43,4 @@ services:
 
 volumes:
   postgres_data:
+  images:
