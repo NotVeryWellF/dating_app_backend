@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import User
 import datetime
 from django.db import models
+from PIL import Image
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):

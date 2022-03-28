@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 import datetime
 import uuid
+from .utils import add_watermark
 
 
 class UserManager(BaseUserManager):
@@ -63,5 +64,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'gender', 'birth_date']
+
+    def save(self, *args, **kwargs):
+        self.avatar = add_watermark(self.avatar)
+        super().save(*args, **kwargs)
 
 

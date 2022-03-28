@@ -28,6 +28,11 @@ DEBUG = os.environ.get("DEBUG") == 'True'
 
 ALLOWED_HOSTS = ["*"]
 
+# Watermark
+WATERMARK_IMAGE_PATH = os.environ.get("WATERMARK_IMAGE")
+IMAGE_HEIGHT = int(os.environ.get("IMAGE_HEIGHT"))
+IMAGE_WIDTH = int(os.environ.get("IMAGE_WIDTH"))
+SAMPLE_IMAGE = os.environ.get("SAMPLE_IMAGE")
 
 # Application definition
 
